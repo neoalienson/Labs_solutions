@@ -457,32 +457,6 @@ resource "google_compute_instance" "tf-instance-2" {
   allow_stopping_for_update = true
 }
 
-
-module "vpc" {
-    source  = "terraform-google-modules/network/google"
-    version = "~> 6.0.0"
-
-    project_id   = "$PROJECT_ID"
-    network_name = "$VPC_NAME"
-    routing_mode = "GLOBAL"
-
-    subnets = [
-        {
-            subnet_name           = "subnet-01"
-            subnet_ip             = "10.10.10.0/24"
-            subnet_region         = "$REGION"
-        },
-        {
-            subnet_name           = "subnet-02"
-            subnet_ip             = "10.10.20.0/24"
-            subnet_region         = "$REGION"
-            subnet_private_access = "true"
-            subnet_flow_logs      = "true"
-            description           = "Please like share & subscribe to quicklab"
-        },
-    ]
-}
-
 EOF
 
 cd ~
